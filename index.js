@@ -64,20 +64,10 @@ const promptUser = () => {
         default: true,
       },
       {
-        type: "checkbox",
+        type: "input",
         name: "license",
         message: "What license is being used?",
-        choices: [
-            "MIT",
-            "apache",
-          ],
-          when: ({ confirmAbout }) => {
-            if (confirmAbout) {
-              return true;
-            } else {
-              return false;
-            }
-          },
+
       },
   
       // Installation

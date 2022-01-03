@@ -15,7 +15,6 @@ const generateLicense = aboutLicense => {
   return `
   # License
 ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
-![https://img.shields.io/hexpm/l/we](https://img.shields.io/hexpm/l/we)
 `
 }
 // TODO: Create a function to generate markdown for README
@@ -28,21 +27,21 @@ module.exports = (templateData) => {
   # ReadMe
    ${data.title}
 
-  # ${generateLicense()}
 
+  ${generateLicense(data)}
 
-  ${data.license}
   
 # Table of Content
-  - [Description](#description)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Testing](#test)
-  - [Contribution](#contribution)
+  - [Description](#Description)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Testing](#Test)
+  - [Contribution](#Contribution)
   - [Questions](#question)
   
+  <a name="Description"></a>
 # Description
-  -   Here you will get a brief description of the project.
+    * Here you will get a brief description of the project.
   - ${data.projectInfo}
   
 # Usage
@@ -57,6 +56,7 @@ module.exports = (templateData) => {
 # Here are the different Installation we used
  - ${data.installation}
   
+ <a name="question"></a>
 # Questions
   - Name: ${data.name}
   - Github Username: ${data.github}
@@ -71,3 +71,8 @@ module.exports = (templateData) => {
 // # License
 // ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
 // ![https://img.shields.io/hexpm/l/we](https://img.shields.io/hexpm/l/we)
+
+
+
+// # License
+// ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
