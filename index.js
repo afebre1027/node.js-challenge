@@ -3,8 +3,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./src/generateMarkdown.js");
 
-
-
 // // TODO: Create an array of questions for user input
 const promptUser = () => {
   return inquirer.prompt([
@@ -43,143 +41,95 @@ const promptUser = () => {
       message: "How can we contact you?",
     },
     {
-        type: "input",
-        name: "title",
-        message: "What is the title of your Project?",
-      },
-  
-      // Project Description
-      {
-        type: "input",
-        name: "projectInfo",
-        message: "What is this project about?",
-      },
-  
-      // License types
-      {
-        type: "confirm",
-        name: "confirmAbout",
-        message:
-          'Is there a license?',
-        default: true,
-      },
-      {
-        type: "input",
-        name: "license",
-        message: "What license is being used?",
+      type: "input",
+      name: "title",
+      message: "What is the title of your Project?",
+    },
 
-      },
-  
-      // Installation
-      {
-        type: "input",
-        name: "installation",
-        message: "What installations did you use?",
-      },
-  
-      // Usage
-      {
-        type: "input",
-        name: "usage",
-        message: "What should be included when using this app?",
-      },
-  
-      // test
-      {
-        type: "input",
-        name: "test",
-        message: "What command will run a test?",
-      },
-  
-      // Contribution
-      {
-        type: "input",
-        name: "contribution",
-        message: "How can everyone contribute?",
-      },
+    // Project Description
+    {
+      type: "input",
+      name: "projectInfo",
+      message: "What is this project about?",
+    },
+
+    // License types
+    {
+      type: "confirm",
+      name: "confirmAbout",
+      message: "Is there a license?",
+      default: true,
+    },
+    {
+      type: "input",
+      name: "license",
+      message: "What license is being used?",
+    },
+
+    // Installation
+    {
+      type: "input",
+      name: "installation",
+      message: "What installations did you use?",
+    },
+
+    // Usage
+    {
+      type: "input",
+      name: "usage",
+      message: "What should be included when using this app?",
+    },
+
+    // test
+    {
+      type: "input",
+      name: "test",
+      message: "What command will run a test?",
+    },
+
+    // Contribution
+    {
+      type: "input",
+      name: "contribution",
+      message: "How can everyone contribute?",
+    },
   ]);
 };
 const promptProject = (portfolioData) => {
-    console.log(`project questions`);
-  
-    // If there's no 'projects' array property, create one
-    if (!portfolioData.projects) {
-      portfolioData.projects = [];
-    }
+  console.log(`project questions`);
 
-  return inquirer.prompt([
-    // Title of project
-    // {
-    //   type: "input",
-    //   name: "title",
-    //   message: "What is the title of your Project?",
-    // },
+  // If there's no 'projects' array property, create one
+  if (!portfolioData.projects) {
+    portfolioData.projects = [];
+  }
 
-    // // Project Description
-    // {
-    //   type: "input",
-    //   name: "projectInfo",
-    //   message: "What is this project about?",
-    // },
-
-    // // License types
-    // {
-    //   type: "input",
-    //   name: "license",
-    //   message: "What license is being used?",
-    // },
-
-    // // Installation
-    // {
-    //   type: "input",
-    //   name: "installation",
-    //   message: "What installations did you use?",
-    // },
-
-    // // Usage
-    // {
-    //   type: "input",
-    //   name: "usage",
-    //   message: "What should be included when using this app?",
-    // },
-
-    // // test
-    // {
-    //   type: "input",
-    //   name: "test",
-    //   message: "What command will run a test?",
-    // },
-
-    // // Contribution
-    // {
-    //   type: "input",
-    //   name: "contribution",
-    //   message: "How can everyone contribute?",
-    // },
-    {
+  return inquirer
+    .prompt([
+      {
         type: "confirm",
         name: "confirmAddProject",
         message: "Would you like to add more extra info?",
         default: false,
       },
-  ])
-  .then(projectData => {
-    portfolioData.projects.push(projectData);
-    if (projectData.confirmAddProject) {
-      return promptProject(portfolioData);
-    } else {
-      return portfolioData;
-    }
-  });
+    ])
+    .then((projectData) => {
+      portfolioData.projects.push(projectData);
+      if (projectData.confirmAddProject) {
+        return promptProject(portfolioData);
+      } else {
+        return portfolioData;
+      }
+    });
 };
+
 promptUser()
   .then(promptProject)
   .then((portfolioData) => {
     const readMe = generateMarkdown(portfolioData);
 
-    fs.writeFile('README.md', readMe, err => {
-        if(err) throw err;
-        console.log("ReadMe Completed!")
+    fs.writeFile("README.md", readMe, (err) => {
+      if (err) throw err;
+      console.log("ReadMe Completed!");
     });
   });
 

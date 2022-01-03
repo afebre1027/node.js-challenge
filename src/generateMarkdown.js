@@ -1,47 +1,64 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
+const generateLicense = (aboutLicense) => {
+  if (!aboutLicense) {
+    return "";
+  }
+  return `
+![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
+`;
+};
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (license){
+    return `
+- [Description](#Description)
+    `
+  } else {
+    return '';
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-const generateLicense = aboutLicense => {
-  if(!aboutLicense) {
-    return '';
-  }
+function renderLicenseSection(license) {
+if (license){
   return `
   # License
-![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
-`
+  - the user used this license
+  `
+} else {
+  return '';
 }
+}
+
 // TODO: Create a function to generate markdown for README
 // function generateMarkdown(data) {
 
 module.exports = (templateData) => {
-  const {...data } = templateData;
-
+  const { ...data } = templateData;
+    console.log(data);
   return `
   # ReadMe
    ${data.title}
 
-
-  ${generateLicense(data)}
+${renderLicenseSection(data.license)}
+${generateLicense(data.license)}
 
   
 # Table of Content
   - [Description](#Description)
+${renderLicenseLink(data.license)}
   - [Installation](#Installation)
   - [Usage](#Usage)
   - [Testing](#Test)
   - [Contribution](#Contribution)
   - [Questions](#question)
   
-  <a name="Description"></a>
+  
 # Description
-    * Here you will get a brief description of the project.
+    ## Here you will get a brief description of the project.
   - ${data.projectInfo}
   
 # Usage
@@ -56,7 +73,6 @@ module.exports = (templateData) => {
 # Here are the different Installation we used
  - ${data.installation}
   
- <a name="question"></a>
 # Questions
   - Name: ${data.name}
   - Github Username: ${data.github}
@@ -71,8 +87,6 @@ module.exports = (templateData) => {
 // # License
 // ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
 // ![https://img.shields.io/hexpm/l/we](https://img.shields.io/hexpm/l/we)
-
-
 
 // # License
 // ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
