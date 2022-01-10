@@ -25,24 +25,25 @@
   
 # Description
 ## Here you will get a brief description of the project.
-- this project creats a read me file using node.js
+- this project was to create a read me file using node.js
   
 # Usage
-- clean notes is always good
+- clean notes please
   
 # How to test this application
-- to run the test in the command line enter node index
+- to run the test in the command line type node index
   
 # Contribution
-- keeping the code updated is always great
+- keeping the code clean and updated often
   
 # Here are the different Installation we used
-- installation used is npm install inquirer
+- npm install inquirer was used for this application
   
 # Questions
 - Name: Andrew
-- Github Username: afebre1027
+- Github Username: Afebre1027
 - Github link: https://github.com/afebre1027/node.js-challenge
 - Email: afebre1027@gmail.com
 - Contact: 786-786-3050
+- Video Link: https://watch.screencastify.com/v/jDDPKWuML1aIq0HtPgHY
   
