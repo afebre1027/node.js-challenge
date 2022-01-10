@@ -79,6 +79,7 @@ ${renderLicenseLink(data.license)}
 - Github link: ${data.githubLink}
 - Email: ${data.email}
 - Contact: ${data.contact}
+- Video Link: https://watch.screencastify.com/v/jDDPKWuML1aIq0HtPgHY
   `;
 };
 
