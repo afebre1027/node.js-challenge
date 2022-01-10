@@ -25,8 +25,8 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
 if (license){
   return `
-  # License
-  - the user used this license
+# License
+- the user used this license
   `
 } else {
   return '';
@@ -40,53 +40,45 @@ module.exports = (templateData) => {
   const { ...data } = templateData;
     console.log(data);
   return `
-  # ReadMe
-   ${data.title}
+# ReadMe
+# ${data.title}
 
 ${renderLicenseSection(data.license)}
 ${generateLicense(data.license)}
 
   
 # Table of Content
-  - [Description](#Description)
+- [Description](#Description)
 ${renderLicenseLink(data.license)}
-  - [Installation](#Installation)
-  - [Usage](#Usage)
-  - [Testing](#Test)
-  - [Contribution](#Contribution)
-  - [Questions](#question)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Testing](#Test)
+- [Contribution](#Contribution)
+- [Questions](#question)
   
   
 # Description
-    ## Here you will get a brief description of the project.
-  - ${data.projectInfo}
+## Here you will get a brief description of the project.
+- ${data.projectInfo}
   
 # Usage
-  - ${data.usage}
+- ${data.usage}
   
 # How to test this application
-  - ${data.test}
+- ${data.test}
   
 # Contribution
-  -  ${data.contribution}
+- ${data.contribution}
   
 # Here are the different Installation we used
- - ${data.installation}
+- ${data.installation}
   
 # Questions
-  - Name: ${data.name}
-  - Github Username: ${data.github}
-  - Github link: ${data.githubLink}
-  - Email: ${data.email}
-  - Contact: ${data.contact}
+- Name: ${data.name}
+- Github Username: ${data.github}
+- Github link: ${data.githubLink}
+- Email: ${data.email}
+- Contact: ${data.contact}
   `;
 };
 
-// module.exports = generateMarkdown;
-// https://img.shields.io/hexpm/l/we
-// # License
-// ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
-// ![https://img.shields.io/hexpm/l/we](https://img.shields.io/hexpm/l/we)
-
-// # License
-// ![https://img.shields.io/npm/l/li](https://img.shields.io/npm/l/li)
